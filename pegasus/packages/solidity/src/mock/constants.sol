@@ -1,0 +1,55 @@
+// SPDX-License-Identifier: Apache-2.0
+
+pragma solidity 0.8.20;
+
+bytes32 constant STBC_FACTORY = keccak256("STBC_FACTORY");
+bytes32 constant ORACLE_UPDATER = keccak256("ORACLE_UPDATER");
+
+bytes32 constant CONTRACT_RWA_FACTORY = keccak256("CONTRACT_RWA_FACTORY");
+
+uint256 constant REDEEM_FEE = 10;
+uint256 constant SCALAR_ONE_SZABO = 1e12;
+
+uint256 constant ONE_MONTH_IN_SECONDS = 30 days;
+
+uint256 constant ONE_YEAR = 31_536_000;
+
+/* Third-party tokens */
+address constant USDT = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+address constant USDC = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+address constant USYC = 0x136471a34f6ef19fE571EFFC1CA711fdb8E49f2b;
+
+address constant USDC_SEPOLIA = 0xAc8EC9BAE3EFBE8f792e2D93C1E92c046a6C31AD;
+address constant USYC_SEPOLIA = 0xc12Bc39224b6F5ED65Be35b5D8A92AefAD3F418d;
+
+address constant USDC_PRICE_FEED_MAINNET = 0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6;
+address constant USDT_PRICE_FEED_MAINNET = 0x3E7d1eAB13ad0104d2750B8863b489D65364e32D;
+address constant USYC_PRICE_FEED_MAINNET = 0x4c48bcb2160F8e0aDbf9D4F3B034f1e36d1f8b3e;
+address constant USDC_PRICE_FEED_SEPOLIA = 0xA2F78ab2355fe2f984D808B5CeE7FD0A93D5270E;
+address constant USYC_PRICE_FEED_SEPOLIA = 0x35b96d80C72f873bACc44A1fACfb1f5fac064f1a;
+
+address constant MORPHO_MAINNET = 0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb;
+address constant ADAPTIVE_CURVE_IRM = 0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC;
+address constant MORPHO_CHAINLINK_ORACLE_USDC_SDAI = 0x6CAFE228eC0B0bC2D076577d56D35Fe704318f6d;
+
+address constant CURVE_POOL = 0x1d08E7adC263CfC70b1BaBe6dC5Bb339c16Eec52;
+
+/* Mainnet Usual Deployment*/
+address constant USUAL_MULTISIG_MAINNET = 0x6e9d65eC80D69b1f508560Bc7aeA5003db1f7FB7;
+address constant USUAL_PROXY_ADMIN_MAINNET = 0xaaDa24358620d4638a2eE8788244c6F4b197Ca16;
+address constant USD0_MAINNET = 0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5;
+address constant DAO_COLLATERAL_MAINNET = 0xde6e1F680C4816446C8D515989E2358636A38b04;
+address constant REGISTRY_CONTRACT_MAINNET = 0x0594cb5ca47eFE1Ff25C7B8B43E221683B4Db34c;
+address constant REGISTRY_ACCESS_MAINNET = 0x0D374775E962c3608B8F0A4b8B10567DF739bb56;
+address constant USD0PP_MAINNET = 0x35D8949372D46B7a3D5A56006AE77B215fc69bC0;
+
+/* Names */
+string constant USD0Symbol = "USD0";
+string constant USD0Name = "Usual USD";
+
+string constant USDPPSymbol = "USD0++";
+string constant USDPPName = "USD0 Liquid Bond";
+
+bytes32 constant REGISTRY_SALT = keccak256("Usual Protocol Registry");
+// https://github.com/Arachnid/deterministic-deployment-proxy
+address constant DETERMINISTIC_DEPLOYMENT_PROXY = 0x4e59b44847b379578588920cA78FbF26c0B4956C;

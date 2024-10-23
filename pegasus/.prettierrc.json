@@ -1,0 +1,16 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": false,
+  "htmlWhitespaceSensitivity": "strict",
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "printWidth": 80,
+        "singleQuote": true
+      }
+    }
+  ]
+}

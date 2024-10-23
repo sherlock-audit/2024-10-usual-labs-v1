@@ -1,0 +1,237 @@
+=======================
+👁️ STORAGE LAYOUT snapsho 👁️ 
+=======================
+
+=======================
+ ➡ TokenMapping
+=======================
+
+| Name             | Type                        | Slot | Offset | Bytes | Contract                          |
+|------------------|-----------------------------|------|--------|-------|-----------------------------------|
+| registryAccess   | contract IRegistryAccess    | 0    | 0      | 20    | src/tokenMapping.sol:TokenMapping |
+| registryContract | contract IRegistryContract  | 1    | 0      | 20    | src/tokenMapping.sol:TokenMapping |
+| _mmftToStbc      | mapping(address => address) | 2    | 0      | 32    | src/tokenMapping.sol:TokenMapping |
+| _stbcToMmft      | mapping(address => address) | 3    | 0      | 32    | src/tokenMapping.sol:TokenMapping |
+
+=======================
+ ➡ UsualDAO
+=======================
+
+| Name                    | Type                                                           | Slot | Offset | Bytes | Contract                    |
+|-------------------------|----------------------------------------------------------------|------|--------|-------|-----------------------------|
+| _name                   | string                                                         | 0    | 0      | 32    | src/governance.sol:UsualDAO |
+| _proposals              | mapping(uint256 => struct Governor.ProposalCore)               | 1    | 0      | 32    | src/governance.sol:UsualDAO |
+| _governanceCall         | struct DoubleEndedQueue.Bytes32Deque                           | 2    | 0      | 64    | src/governance.sol:UsualDAO |
+| _votingDelay            | uint256                                                        | 4    | 0      | 32    | src/governance.sol:UsualDAO |
+| _votingPeriod           | uint256                                                        | 5    | 0      | 32    | src/governance.sol:UsualDAO |
+| _proposalThreshold      | uint256                                                        | 6    | 0      | 32    | src/governance.sol:UsualDAO |
+| _proposalVotes          | mapping(uint256 => struct GovernorCountingSimple.ProposalVote) | 7    | 0      | 32    | src/governance.sol:UsualDAO |
+| _quorumNumerator        | uint256                                                        | 8    | 0      | 32    | src/governance.sol:UsualDAO |
+| _quorumNumeratorHistory | struct Checkpoints.History                                     | 9    | 0      | 32    | src/governance.sol:UsualDAO |
+| _timelock               | contract TimelockController                                    | 10   | 0      | 20    | src/governance.sol:UsualDAO |
+| _timelockIds            | mapping(uint256 => bytes32)                                    | 11   | 0      | 32    | src/governance.sol:UsualDAO |
+| _status                 | uint256                                                        | 12   | 0      | 32    | src/governance.sol:UsualDAO |
+| _registry               | address                                                        | 13   | 0      | 20    | src/governance.sol:UsualDAO |
+
+=======================
+ ➡ StbcFactory
+=======================
+
+| Name                 | Type                       | Slot | Offset | Bytes | Contract                                |
+|----------------------|----------------------------|------|--------|-------|-----------------------------------------|
+| _status              | uint256                    | 0    | 0      | 32    | src/factory/stbcFactory.sol:StbcFactory |
+| _daoCollateral       | address                    | 1    | 0      | 20    | src/factory/stbcFactory.sol:StbcFactory |
+| _usualDAO            | address                    | 2    | 0      | 20    | src/factory/stbcFactory.sol:StbcFactory |
+| _stbcs               | address[]                  | 3    | 0      | 32    | src/factory/stbcFactory.sol:StbcFactory |
+| _registryAccess      | contract IRegistryAccess   | 4    | 0      | 20    | src/factory/stbcFactory.sol:StbcFactory |
+| _registryContract    | contract IRegistryContract | 5    | 0      | 20    | src/factory/stbcFactory.sol:StbcFactory |
+| _stbcFactory         | contract IStbcFactory      | 6    | 0      | 20    | src/factory/stbcFactory.sol:StbcFactory |
+| _isStbc              | mapping(address => bool)   | 7    | 0      | 32    | src/factory/stbcFactory.sol:StbcFactory |
+| _stbcSymbolToAddress | mapping(string => address) | 8    | 0      | 32    | src/factory/stbcFactory.sol:StbcFactory |
+
+=======================
+ ➡ UsDAO
+=======================
+
+| Name                             | Type                                            | Slot | Offset | Bytes | Contract                  |
+|----------------------------------|-------------------------------------------------|------|--------|-------|---------------------------|
+| _balances                        | mapping(address => uint256)                     | 0    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _allowances                      | mapping(address => mapping(address => uint256)) | 1    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _totalSupply                     | uint256                                         | 2    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _name                            | string                                          | 3    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _symbol                          | string                                          | 4    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _nonces                          | mapping(address => struct Counters.Counter)     | 5    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                         | 6    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _paused                          | bool                                            | 7    | 0      | 1     | src/token/usDAO.sol:UsDAO |
+| _registryContract                | contract IRegistryContract                      | 7    | 1      | 20    | src/token/usDAO.sol:UsDAO |
+| _registryAccess                  | contract IRegistryAccess                        | 8    | 0      | 20    | src/token/usDAO.sol:UsDAO |
+| _isBlacklisted                   | mapping(address => bool)                        | 9    | 0      | 32    | src/token/usDAO.sol:UsDAO |
+| _userAmountLock                  | mapping(address => uint256)                     | 10   | 0      | 32    | src/token/usDAO.sol:UsDAO |
+
+=======================
+ ➡ LusDAO
+=======================
+
+| Name                             | Type                                               | Slot | Offset | Bytes | Contract                    |
+|----------------------------------|----------------------------------------------------|------|--------|-------|-----------------------------|
+| _balances                        | mapping(address => uint256)                        | 0    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _allowances                      | mapping(address => mapping(address => uint256))    | 1    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _totalSupply                     | uint256                                            | 2    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _name                            | string                                             | 3    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _symbol                          | string                                             | 4    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _nonces                          | mapping(address => struct Counters.Counter)        | 5    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                            | 6    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _delegates                       | mapping(address => address)                        | 7    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _checkpoints                     | mapping(address => struct ERC20Votes.Checkpoint[]) | 8    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _totalSupplyCheckpoints          | struct ERC20Votes.Checkpoint[]                     | 9    | 0      | 32    | src/token/lusDAO.sol:LusDAO |
+| _mgvStrat                        | address                                            | 10   | 0      | 20    | src/token/lusDAO.sol:LusDAO |
+| _registryAccess                  | contract IRegistryAccess                           | 11   | 0      | 20    | src/token/lusDAO.sol:LusDAO |
+| _registryContract                | contract IRegistryContract                         | 12   | 0      | 20    | src/token/lusDAO.sol:LusDAO |
+
+=======================
+ ➡ FusDAO
+=======================
+
+| Name                             | Type                                               | Slot | Offset | Bytes | Contract                    |
+|----------------------------------|----------------------------------------------------|------|--------|-------|-----------------------------|
+| _balances                        | mapping(address => uint256)                        | 0    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _allowances                      | mapping(address => mapping(address => uint256))    | 1    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _totalSupply                     | uint256                                            | 2    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _name                            | string                                             | 3    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _symbol                          | string                                             | 4    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _nonces                          | mapping(address => struct Counters.Counter)        | 5    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                            | 6    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _paused                          | bool                                               | 7    | 0      | 1     | src/token/fusDAO.sol:FusDAO |
+| _registryContract                | contract IRegistryContract                         | 7    | 1      | 20    | src/token/fusDAO.sol:FusDAO |
+| _registryAccess                  | contract IRegistryAccess                           | 8    | 0      | 20    | src/token/fusDAO.sol:FusDAO |
+| _isBlacklisted                   | mapping(address => bool)                           | 9    | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _delegates                       | mapping(address => address)                        | 10   | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _checkpoints                     | mapping(address => struct ERC20Votes.Checkpoint[]) | 11   | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| _totalSupplyCheckpoints          | struct ERC20Votes.Checkpoint[]                     | 12   | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+| lockUserAmount                   | mapping(address => uint256)                        | 13   | 0      | 32    | src/token/fusDAO.sol:FusDAO |
+
+=======================
+ ➡ MmftMock
+=======================
+
+| Name                             | Type                                            | Slot | Offset | Bytes | Contract                       |
+|----------------------------------|-------------------------------------------------|------|--------|-------|--------------------------------|
+| _balances                        | mapping(address => uint256)                     | 0    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _allowances                      | mapping(address => mapping(address => uint256)) | 1    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _totalSupply                     | uint256                                         | 2    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _name                            | string                                          | 3    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _symbol                          | string                                          | 4    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _nonces                          | mapping(address => struct Counters.Counter)     | 5    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                         | 6    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+| _paused                          | bool                                            | 7    | 0      | 1     | src/mock/mmftMock.sol:MmftMock |
+| _registryContract                | contract IRegistryContract                      | 7    | 1      | 20    | src/mock/mmftMock.sol:MmftMock |
+| _registryAccess                  | contract IRegistryAccess                        | 8    | 0      | 20    | src/mock/mmftMock.sol:MmftMock |
+| _isBlacklisted                   | mapping(address => bool)                        | 9    | 0      | 32    | src/mock/mmftMock.sol:MmftMock |
+
+=======================
+ ➡ STBC
+=======================
+
+| Name                             | Type                                            | Slot | Offset | Bytes | Contract                |
+|----------------------------------|-------------------------------------------------|------|--------|-------|-------------------------|
+| _balances                        | mapping(address => uint256)                     | 0    | 0      | 32    | src/token/stbc.sol:STBC |
+| _allowances                      | mapping(address => mapping(address => uint256)) | 1    | 0      | 32    | src/token/stbc.sol:STBC |
+| _totalSupply                     | uint256                                         | 2    | 0      | 32    | src/token/stbc.sol:STBC |
+| _name                            | string                                          | 3    | 0      | 32    | src/token/stbc.sol:STBC |
+| _symbol                          | string                                          | 4    | 0      | 32    | src/token/stbc.sol:STBC |
+| _nonces                          | mapping(address => struct Counters.Counter)     | 5    | 0      | 32    | src/token/stbc.sol:STBC |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                         | 6    | 0      | 32    | src/token/stbc.sol:STBC |
+| _paused                          | bool                                            | 7    | 0      | 1     | src/token/stbc.sol:STBC |
+| _registryContract                | contract IRegistryContract                      | 7    | 1      | 20    | src/token/stbc.sol:STBC |
+| _registryAccess                  | contract IRegistryAccess                        | 8    | 0      | 20    | src/token/stbc.sol:STBC |
+| _isBlacklisted                   | mapping(address => bool)                        | 9    | 0      | 32    | src/token/stbc.sol:STBC |
+
+=======================
+ ➡ RegistryContract
+=======================
+
+| Name            | Type                        | Slot | Offset | Bytes | Contract                                           |
+|-----------------|-----------------------------|------|--------|-------|----------------------------------------------------|
+| _contracts      | mapping(bytes32 => address) | 0    | 0      | 32    | src/registry/registryContract.sol:RegistryContract |
+| _registryAccess | address                     | 1    | 0      | 20    | src/registry/registryContract.sol:RegistryContract |
+
+=======================
+ ➡ RegistryAccess
+=======================
+
+| Name          | Type                                              | Slot | Offset | Bytes | Contract                                       |
+|---------------|---------------------------------------------------|------|--------|-------|------------------------------------------------|
+| _owner        | address                                           | 0    | 0      | 20    | src/registry/registryAccess.sol:RegistryAccess |
+| _pendingOwner | address                                           | 1    | 0      | 20    | src/registry/registryAccess.sol:RegistryAccess |
+| _roles        | mapping(bytes32 => struct AccessControl.RoleData) | 2    | 0      | 32    | src/registry/registryAccess.sol:RegistryAccess |
+
+=======================
+ ➡ BucketDistribution
+=======================
+
+| Name             | Type                                                                   | Slot | Offset | Bytes | Contract                                             |
+|------------------|------------------------------------------------------------------------|------|--------|-------|------------------------------------------------------|
+| _paused          | bool                                                                   | 0    | 0      | 1     | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _status          | uint256                                                                | 1    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| registryAccess   | contract IRegistryAccess                                               | 2    | 0      | 20    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| registryContract | contract IRegistryContract                                             | 3    | 0      | 20    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _safeAddress     | address                                                                | 4    | 0      | 20    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| safeCoolDown     | uint256                                                                | 5    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _mmftBucketInfo  | mapping(bytes32 => struct BucketDistribution.CollateralizedBucketInfo) | 6    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _distributor     | mapping(bytes32 => contract IDistributor)                              | 7    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _balance         | mapping(bytes32 => uint256)                                            | 8    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _token           | mapping(bytes32 => address)                                            | 9    | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+| _feeBucket       | mapping(address => bytes32)                                            | 10   | 0      | 32    | src/bucket/bucketDistribution.sol:BucketDistribution |
+
+=======================
+ ➡ Gate
+=======================
+
+| Name              | Type                                            | Slot | Offset | Bytes | Contract          |
+|-------------------|-------------------------------------------------|------|--------|-------|-------------------|
+| _registryAccess   | contract IRegistryAccess                        | 0    | 0      | 20    | src/gate.sol:Gate |
+| _registryContract | contract IRegistryContract                      | 1    | 0      | 20    | src/gate.sol:Gate |
+| _isWhitelist      | mapping(address => bool)                        | 2    | 0      | 32    | src/gate.sol:Gate |
+| _amountDeposit    | mapping(address => mapping(address => uint256)) | 3    | 0      | 32    | src/gate.sol:Gate |
+
+=======================
+ ➡ StusUSD
+=======================
+
+| Name            | Type                                            | Slot | Offset | Bytes | Contract                      |
+|-----------------|-------------------------------------------------|------|--------|-------|-------------------------------|
+| _initialized    | uint8                                           | 0    | 0      | 1     | src/token/stusUSD.sol:StusUSD |
+| _initializing   | bool                                            | 0    | 1      | 1     | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[50]                                     | 1    | 0      | 1600  | src/token/stusUSD.sol:StusUSD |
+| _balances       | mapping(address => uint256)                     | 51   | 0      | 32    | src/token/stusUSD.sol:StusUSD |
+| _allowances     | mapping(address => mapping(address => uint256)) | 52   | 0      | 32    | src/token/stusUSD.sol:StusUSD |
+| _totalSupply    | uint256                                         | 53   | 0      | 32    | src/token/stusUSD.sol:StusUSD |
+| _name           | string                                          | 54   | 0      | 32    | src/token/stusUSD.sol:StusUSD |
+| _symbol         | string                                          | 55   | 0      | 32    | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[45]                                     | 56   | 0      | 1440  | src/token/stusUSD.sol:StusUSD |
+| _asset          | contract IERC20Upgradeable                      | 101  | 0      | 20    | src/token/stusUSD.sol:StusUSD |
+| _decimals       | uint8                                           | 101  | 20     | 1     | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[49]                                     | 102  | 0      | 1568  | src/token/stusUSD.sol:StusUSD |
+| _paused         | bool                                            | 151  | 0      | 1     | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[49]                                     | 152  | 0      | 1568  | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[50]                                     | 201  | 0      | 1600  | src/token/stusUSD.sol:StusUSD |
+| __gap           | uint256[50]                                     | 251  | 0      | 1600  | src/token/stusUSD.sol:StusUSD |
+| _registryAccess | contract IRegistryAccess                        | 301  | 0      | 20    | src/token/stusUSD.sol:StusUSD |
+
+=======================
+ ➡ RusUSD
+=======================
+
+| Name                             | Type                                            | Slot | Offset | Bytes | Contract                    |
+|----------------------------------|-------------------------------------------------|------|--------|-------|-----------------------------|
+| _balances                        | mapping(address => uint256)                     | 0    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _allowances                      | mapping(address => mapping(address => uint256)) | 1    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _totalSupply                     | uint256                                         | 2    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _name                            | string                                          | 3    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _symbol                          | string                                          | 4    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _nonces                          | mapping(address => struct Counters.Counter)     | 5    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _PERMIT_TYPEHASH_DEPRECATED_SLOT | bytes32                                         | 6    | 0      | 32    | src/token/rusUSD.sol:RusUSD |
+| _paused                          | bool                                            | 7    | 0      | 1     | src/token/rusUSD.sol:RusUSD |
+| _registryContract                | contract IRegistryContract                      | 7    | 1      | 20    | src/token/rusUSD.sol:RusUSD |
+| _registryAccess                  | contract IRegistryAccess                        | 8    | 0      | 20    | src/token/rusUSD.sol:RusUSD |
+| _isBlacklisted                   | mapping(address => bool)                        | 9    | 0      | 32    | src/token/rusUSD.sol:RusUSD |

@@ -1,0 +1,81 @@
+[profile.default]
+src = 'src'
+out = 'out'
+test = 'test'
+libs = ['lib', 'shared']
+script = 'scripts'
+solc_version = "0.8.20"
+evm_version = 'shanghai'
+auto_detect_remappings = false
+optimizer = true
+optimizer_runs = 200
+verbosity = 2
+ffi = true
+ast = true
+build_info = true
+extra_output = ["storageLayout"]
+cache_path = 'cache'
+broadcast = 'broadcast'
+
+[fuzz]
+# The number of fuzz runs for fuzz tests
+runs = 1000
+# The maximum number of test case rejections allowed by proptest, to be
+# encountered during usage of `vm.assume` cheatcode. This will be used
+# to set the `max_global_rejects` value in proptest test runner config.
+# `max_local_rejects` option isn't exposed here since we're not using
+# `prop_filter`.
+max_test_rejects = 99
+# The weight of the dictionary
+dictionary_weight = 40
+# The flag indicating whether to include values from storage
+include_storage = true
+# The flag indicating whether to include push bytes values
+include_push_bytes = true
+
+
+[profile.ci.fuzz]
+runs = 10_000
+max_test_rejects = 9_999
+dictionary_weight = 40
+include_storage = true
+include_push_bytes = true
+
+
+[rpc_endpoints]
+eth = "${RPC_URL}"
+arbitrum = "${ARBI_RPC_URL}"
+
+[fmt]
+line_length = 100
+number_underscore = "thousands"
+
+[profile.smt.model_checker]
+engine = 'chc'
+timeout = 10_000
+targets = [
+  'assert',
+  'constantCondition',
+  'divByZero',
+  'outOfBounds',
+  'overflow',
+  'underflow',
+  'popEmptyArray',
+  'balance',
+]
+
+
+[profile.smt.model_checker.contracts]
+'src/tokenMapping.sol' = ['TokenMapping']
+'src/nftReceiptFiat.sol' = ['NftReceiptFiat']
+'src/governance.sol' = ['UsualDAO']
+'src/arbitrageRedeem.sol' = ['ArbitrageRedeem']
+'src/nftReceiptCrypto.sol' = ['NftReceiptCrypto']
+'src/stbcFactory.sol' = ['StbcFactory']
+'src/token/usDAO.sol' = ['UsDAO']
+'src/token/plusDAO.sol' = ['PlusDAO']
+'src/token/lusDAO.sol' = ['LusDAO']
+'src/token/mmftMock.sol' = ['MmftMock']
+'src/token/stbc.sol' = ['STBC']
+'src/token/usLp.sol' = ['UsLp']
+'src/treasury.sol' = ['Treasury']

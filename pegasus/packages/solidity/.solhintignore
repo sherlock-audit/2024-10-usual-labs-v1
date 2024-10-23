@@ -1,0 +1,11 @@
+ABDKMathQuad.sol
+string.sol
+**/*.s.sol
+**/*.t.sol
+ICurvePool.sol
+ICurveFactory.sol
+IGauge.sol
+Upgrades.sol
+**/morpho/*.sol
+MarketParamsLib.sol
+UpgradeScriptBase.sol

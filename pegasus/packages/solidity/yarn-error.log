@@ -1,0 +1,67 @@
+Arguments: 
+  /home/zgo/.nvm/versions/node/v16.13.1/bin/node /usr/bin/yarn build:types
+
+PATH: 
+  /home/zgo/.yarn/bin:/home/zgo/.config/yarn/global/node_modules/.bin:/home/zgo/.yarn/bin:/home/zgo/.config/yarn/global/node_modules/.bin:/home/zgo/.nvm/versions/node/v16.13.1/bin:/home/zgo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/usr/local/go/bin:/home/zgo/work/bin:/usr/local/bin:/home/zgo/.oh-my-zsh/plugins/kubetail:/home/zgo/.foundry/bin:/usr/local/go/bin:/home/zgo/work/bin:/usr/local/bin:/home/zgo/.oh-my-zsh/plugins/kubetail:/home/zgo/.foundry/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.13.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/zgo/work/src/github.com/usual-dao/usual-money/packages/solidity/package.json: Unexpected token / in JSON at position 958
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@usual-money/solidity",
+    "private": true,
+    "version": "0.0.0",
+    "devDependencies": {
+      "lint-staged": "^13.1.0",
+      "solhint": "^3.3.7", 
+      "typechain": "^8.1.1",
+      "typescript": "^4.9.4"
+    },
+    "scripts": {
+      "install": "forge install",
+      "install-slither": "python3 -m venv .venv && . .venv/bin/activate && pip3 install slither-analyzer",
+      "precommit": "lint-staged",
+      "test": "forge test",
+      "coverage": "forge coverage",
+      "build": "forge build",
+      "format": "forge fmt src test",
+      "format:check": "yarn format --check",
+      "lint:check": "yarn solhint",
+      "lint": "yarn lint:check --fix",
+      "solhint": "solhint './src/**/*.sol'",
+      "analyze": ". .venv/bin/activate && yarn slither",
+      "deploy": "tsx ./scripts/deploy/deploy.ts",
+      "slither": "slither . --filter-paths \"lib|test\" --exclude naming-convention",
+      "build:types": "typechain --show-stack-traces --target ethers-v5  --out-dir=types"
+     // "build:types": "typechain --show-stack-traces --target ethers-v5 ../out/**/[!(test.sol)]*/*.json --out-dir=types"
+    },
+    "lint-staged": {
+      "*.sol": [
+        "solhint --fix",
+        "forge format"
+      ]
+    }, 
+    "dependencies": {}
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

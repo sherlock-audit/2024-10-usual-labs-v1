@@ -1,0 +1,39 @@
+{
+  "name": "usual-money",
+  "author": "usual-dao",
+  "description": "Solidity smart contracts of usual stablecoin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usual-dao/pegasus.git"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "install": "lerna run install --parallel",
+    "precommit": "lerna run precommit --parallel",
+    "test": "lerna run test --parallel --",
+    "build": "lerna run  build --parallel --",
+    "coverage": "lerna run --parallel coverage --",
+    "lint": "lerna run lint --parallel --",
+    "lint:check": "lerna run lint:check --parallel --",
+    "format": "lerna run format --parallel --",
+    "format:check": "lerna run format:check --parallel --",
+    "lint:cspell": "cspell $(find . -type f \\( -name '*.sol' \\) ! -path '*/node_modules/*' ! -path '*/lib/*' ! -path '*/frontend/*')",
+    "graph": "nx graph"
+  },
+  "devDependencies": {
+    "husky": "^8.0.2",
+    "lerna": "^6.1.0",
+    "cspell": "^6.28.0",
+    "prettier": "^2.5.1",
+    "nx": "^15.3.3"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}

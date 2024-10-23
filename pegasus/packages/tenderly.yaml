@@ -1,0 +1,55 @@
+account_id: ""
+actions:
+  usual/cd:
+    runtime: v2
+    sources: actions
+    specs:
+      signals:
+        description: receive alert signals, process them and send to telegram and signl4 for DANGER alerts
+        function: signals:onAlertHook
+        trigger:
+          type: alert
+          alert: {}
+        execution_type: parallel
+
+      liquidityPending:
+        description: receive alert when USDC is deposited. With the orderId we check after 10 blocks that the order has been taken if not it sends a message to telegram
+        function: liquidityPending:onDepositLiquidityHook
+        execution_type: parallel
+        trigger:
+          type: transaction
+          transaction:
+            status:
+              - confirmed10
+            filters:
+              # Transaction must be from the network with network ID 1 (mainnet)
+              - network: 1
+                # Transaction must have succeeded
+                status: success
+                logEmitted:
+                  # transaction must have involved the swapper engine
+                  contract:
+                    address: 0xB969B0d14F7682bAF37ba7c364b351B830a812B2
+                    # coming from the contract at this address
+                  startsWith:
+                    # and topics of the log entry must start with this
+                    - 0x90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15
+
+      fork-webhook:
+        description: Action listens to webhook to create a fork
+        function: fork-webhook:onForkHook
+        trigger:
+          type: webhook
+          webhook:
+            authenticated: true
+        execution_type: sequential
+      testnet-heartbeat:
+        description: Action listens to new block and send transaction from MNEMONIC first address to force fork sync
+        function: testnet-heartbeat:onBlockHook
+        trigger:
+          type: block
+          block:
+            network:
+              - 1
+            blocks: 300
+        execution_type: sequential

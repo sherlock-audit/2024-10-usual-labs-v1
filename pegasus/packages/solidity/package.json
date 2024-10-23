@@ -1,0 +1,57 @@
+{
+  "name": "@usual-money/solidity",
+  "private": true,
+  "version": "0.0.0",
+  "devDependencies": {
+    "lint-staged": "^13.2.3",
+    "solhint": "^3.4.1",
+    "tsx": "^3.12.7",
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "install": "forge install",
+    "install-slither": "python3 -m venv .venv && . .venv/bin/activate && pip3 install slither-analyzer",
+    "precommit": "lint-staged",
+    "test": "forge clean && forge test",
+    "coverage": "forge coverage",
+    "coverage:lcov": "forge coverage --report lcov",
+    "build": "forge build",
+    "format": "forge fmt src test scripts",
+    "format:check": "yarn format --check",
+    "lint:check": "yarn solhint",
+    "smt:check": "FOUNDRY_PROFILE=smt forge build --names",
+    "lint": "yarn lint:check --fix",
+    "solhint": "solhint './{src,shared,scripts,test}/**/*.sol'",
+    "analyze": ". .venv/bin/activate && yarn slither",
+    "deploy:simulate": "yarn deploy FinalConfigScript",
+    "deploy:simulate:L2": "yarn deploy L2ContractScript",
+    "deploy:script:local": "yarn deploy:simulate -r http://localhost:8545 -b",
+    "deploy:local": "./scripts/local-env-setup.sh",
+    "setup:local": "(source ./.env && yarn start:anvil &>/dev/null & ) && ./scripts/local-env-setup.sh",
+    "deploy": "tsx ./scripts/runner/deploy.ts",
+    "seed:local": "yarn seed -r http://localhost:8545",
+    "seed": "./scripts/seed.sh -b",
+    "tenderly:action:fork": "./scripts/tenderly-action-fork.sh",
+    "slither": "slither ./ --exclude-low --exclude-informational --exclude-optimization --exclude-dependencies --filter-paths \"lib|test|src/mock\"",
+    "start:anvil": "tsx ./scripts/anvil/anvil.ts",
+    "extract:registry:contract:address": "./scripts/extract-registry-contract-address.sh"
+  },
+  "lint-staged": {
+    "*.sol": [
+      "solhint --fix --max-warnings 0",
+      "forge fmt"
+    ]
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.7",
+    "@openzeppelin/upgrades-core": "1.34.1",
+    "@types/command-line-args": "5.2.0",
+    "command-line-args": "5.2.1",
+    "csv-parser": "^3.0.0",
+    "ts-node": "^10.9.1",
+    "yargs": "^17.7.2"
+  }
+}
