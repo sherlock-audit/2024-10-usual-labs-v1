@@ -84,6 +84,8 @@ https://usual.gitbook.io/usual-technical-documentation/Aw3jUdIChYIRnEPcqUqK/secu
 ___
 
 ### Q: Please list any relevant protocol resources.
+https://www.loom.com/share/bd30edd538594f6da36d083b0b8ccf47?sid=cf1d0cef-b810-4bdf-8f95-42fbe5f60230
+
 Our tech gitbook, which is currently work in progress:
 
 https://usual.gitbook.io/usual-technical-documentation/Aw3jUdIChYIRnEPcqUqK/
