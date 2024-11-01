@@ -70,6 +70,12 @@ ___
 ### Q: Please list any known issues and explicitly state the acceptable risks for each known issue.
 Any risk regarding the DaoCollateral & USD0 contract, that are not related to the role management changes,  is acceptable unless its High Severity.
 
+Any risks from the acknowledged issues from the previous audit reports are known and acceptable:
+- https://sherlock-files.ams3.digitaloceanspaces.com/contest_data/Pegasus Competition by Cantina.pdf
+- https://sherlock-files.ams3.digitaloceanspaces.com/contest_data/Pegasus permissioned launch - Security Review by Cantina.pdf
+- https://sherlock-files.ams3.digitaloceanspaces.com/contest_data/Usual Pegasus - Security Review by Cantina.pdf
+- https://sherlock-files.ams3.digitaloceanspaces.com/contest_data/report-cantinacode-usual-1007-phase1.pdf
+- https://sherlock-files.ams3.digitaloceanspaces.com/contest_data/report-cantinacode-usual-1007-phase2.pdf
 
 
 
